@@ -3,31 +3,29 @@
 
 #include <random>
 #include <vector>
+#include "optimizer.h"
 #include "backtrackinglinesearch.h"
 #include <iostream>
 #include <fstream>
 
+
 using namespace std;
 
-struct randomRestartMethod
+class randomRestartMethod: public optimizer
 {
     double from;
     double to;
     uint no_restarts;
-
     backtrackingLineSearch* unconstraint_optimizer;
 
-    bool verbose;
-    ofstream logFile;
     
 public:
     randomRestartMethod();
     randomRestartMethod(backtrackingLineSearch& unconstraint_optimizer,\
-                        double from, double to, uint no_restarts, bool verbose);
-
+                        double from, double to, uint no_restarts, int verbose);
+    vector<vector<double>> optimize();
     double (*f)(vector<double>);
     vector<double> (*df)(vector<double>);
-    vector<vector<double>> optimize();
 };
 
 #endif // RANDOMRESTARTMETHOD_H

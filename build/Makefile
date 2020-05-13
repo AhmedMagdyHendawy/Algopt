@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ahmed-hendway/algopt
+CMAKE_SOURCE_DIR = /home/ahmed-hendway/Algopt
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ahmed-hendway/algopt/build
+CMAKE_BINARY_DIR = /home/ahmed-hendway/Algopt/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ahmed-hendway/algopt/build/CMakeFiles /home/ahmed-hendway/algopt/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ahmed-hendway/Algopt/build/CMakeFiles /home/ahmed-hendway/Algopt/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ahmed-hendway/algopt/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ahmed-hendway/Algopt/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -177,6 +177,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/algopt.dir/build.make CMakeFiles/algopt.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+optimizer.o: optimizer.cpp.o
+
+.PHONY : optimizer.o
+
+# target to build an object file
+optimizer.cpp.o:
+	$(MAKE) -f CMakeFiles/algopt.dir/build.make CMakeFiles/algopt.dir/optimizer.cpp.o
+.PHONY : optimizer.cpp.o
+
+optimizer.i: optimizer.cpp.i
+
+.PHONY : optimizer.i
+
+# target to preprocess a source file
+optimizer.cpp.i:
+	$(MAKE) -f CMakeFiles/algopt.dir/build.make CMakeFiles/algopt.dir/optimizer.cpp.i
+.PHONY : optimizer.cpp.i
+
+optimizer.s: optimizer.cpp.s
+
+.PHONY : optimizer.s
+
+# target to generate assembly for a file
+optimizer.cpp.s:
+	$(MAKE) -f CMakeFiles/algopt.dir/build.make CMakeFiles/algopt.dir/optimizer.cpp.s
+.PHONY : optimizer.cpp.s
+
 randomrestartmethod.o: randomrestartmethod.cpp.o
 
 .PHONY : randomrestartmethod.o
@@ -246,6 +273,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... optimizer.o"
+	@echo "... optimizer.i"
+	@echo "... optimizer.s"
 	@echo "... randomrestartmethod.o"
 	@echo "... randomrestartmethod.i"
 	@echo "... randomrestartmethod.s"

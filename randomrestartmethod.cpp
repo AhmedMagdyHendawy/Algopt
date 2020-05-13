@@ -9,7 +9,7 @@ randomRestartMethod::randomRestartMethod()
 }
 
 randomRestartMethod::randomRestartMethod(backtrackingLineSearch& unconstraint_optimizer,\
-                                         double from, double to, uint no_restarts, bool verbose){
+                                         double from, double to, uint no_restarts, int verbose){
 
     this->from=from;
     this->to=to;
@@ -28,7 +28,7 @@ vector<vector<double>>  randomRestartMethod::optimize(){
     for(uint i=0;i<=no_restarts;i++){
         vector<double> x={dis(gen),dis(gen)};
         vector<double> x_opt;
-        if(verbose){
+        if(verbose!=0){
             string logFileName="solutionPath"+to_string(i)+".dat";
             unconstraint_optimizer->setLogFileName(logFileName);
             unconstraint_optimizer->setVerbose(true);
@@ -36,6 +36,11 @@ vector<vector<double>>  randomRestartMethod::optimize(){
         unconstraint_optimizer->set_x0(x);
         x_opt=unconstraint_optimizer->optimize();
         cout<<x_opt[0]<<" "<<x_opt[1]<<" "<<i<<endl;
+    }
+    cout<<verbose;
+    if (verbose == 2){
+        std::cout<<"Plotting the solutions"<<std::endl;
+        system("gnuplot -p -e 'load \"../solutionPath.plt\"'");
     }
     return opt_count;
 }

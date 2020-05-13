@@ -23,39 +23,29 @@ backtrackingLineSearch::backtrackingLineSearch(vector<double> x,\
                                                Condition_Type type,\
                                                double (&f)(vector<double>),\
                                                vector<double> (&df)(vector<double>),
-                                               bool verbose,
-                                               string logFileName){
-    this->x=x;
-    this->alpha=alpha;
-    this->alpha_dec=alpha_dec;
-    this->alpha_inc=alpha_inc;
-    this->wolfe_para=wolfe_para;
-    this->tol=tol;
-    this->type=type;
-    this->f=&f;
-    this->df=&df;
+                                               int verbose,
+                                               string logFileName): x(x), alpha(alpha),\
+                                                                    alpha_dec(alpha_dec),\
+                                                                    alpha_inc(alpha_inc),\
+                                                                    wolfe_para(wolfe_para),\
+                                                                    tol(tol),\
+                                                                    type(type),
+                                                                    f(&f),\
+                                                                    df(&df)
+{
     this->verbose=verbose;
-
-    if(this->verbose) logFile.open(logFileName);
-
+    if(verbose!=0) logFile.open(logFileName);
 }
 
 void backtrackingLineSearch:: set_x0(vector<double> x0){
     x=x0;
 }
 
-void backtrackingLineSearch:: setLogFileName(string logFileName){
-    logFile.open(logFileName);
-}
-
-void backtrackingLineSearch:: setVerbose(bool verbose){
-    this->verbose=verbose;
-}
 
 vector<double> backtrackingLineSearch::optimize(){
     uint count=0;
     vector<double> delta;
-    if (verbose){
+    if (verbose!=0){
         cout << "Initial SOLUTION : ("<< x[0] << ","<< x[1]<<")"<<endl;
         logFile<<x[0]<<" "<<x[1]<<" "<<f(x)<<endl;
     }
@@ -63,12 +53,12 @@ vector<double> backtrackingLineSearch::optimize(){
         delta=utils::Delta(df(x));
         while (f({x[0]+alpha*delta[0],x[1]+alpha*delta[1]})>f(x)+wolfe_para*(df(x)[0]*alpha*delta[0]+df(x)[1]*alpha*delta[1])){
             alpha*=alpha_dec;
-            if(verbose) cout<<"Dec Alpha to: "<<alpha<<endl;
+            if(verbose!=0) cout<<"Dec Alpha to: "<<alpha<<endl;
         }
         x[0]+=alpha*delta[0];
         x[1]+=alpha*delta[1];
         alpha*=alpha_inc;
-        if (verbose){
+        if (verbose!=0){
             cout << "########### NEW SOLUTION ########### : ("<< x[0] << ","<< x[1]<<")"<<endl;
             logFile<<x[0]<<" "<<x[1]<<" "<<f(x)<<endl;
         }

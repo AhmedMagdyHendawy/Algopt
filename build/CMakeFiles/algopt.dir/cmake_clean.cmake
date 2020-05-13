@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/algopt.dir/backtrackinglinesearch.cpp.o"
   "CMakeFiles/algopt.dir/randomrestartmethod.cpp.o"
   "CMakeFiles/algopt.dir/utils.cpp.o"
+  "CMakeFiles/algopt.dir/optimizer.cpp.o"
   "algopt.pdb"
   "algopt"
 )
