@@ -52,3 +52,5 @@ Currently, the library contains the following algorithms:
     * The class represents any kind of optimization algorithm. It is a temporal class, in the future the class will be splited into localOptimizer, globalOptimizer, unconstrained and constrained optimzers. 
 * utils.cpp / utils.h
     * It is a namespace which conatains some useful functions line Delta function and parsing function which gets the parameters from the algopt.cfg.
+* logs
+    * The directory contains all the .dat files which save the path for each optimization problem.
