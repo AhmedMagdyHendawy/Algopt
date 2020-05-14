@@ -1,3 +1,0 @@
-/home/ahmed-hendway/Algopt/build/CMakeFiles/rebuild_cache.dir
-/home/ahmed-hendway/Algopt/build/CMakeFiles/algopt.dir
-/home/ahmed-hendway/Algopt/build/CMakeFiles/edit_cache.dir
