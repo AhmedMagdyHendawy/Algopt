@@ -44,6 +44,10 @@ void backtrackingLineSearch:: set_x0(vector<double> x0){
 
 vector<double> backtrackingLineSearch::optimize(){
     uint count=0;
+    //local variable for that optimization problem
+    double alpha_=alpha;
+    double alpha_dec_=alpha_dec;
+    double alpha_inc_=alpha_inc;
     vector<double> delta;
     if (verbose!=0){
         cout << "Initial SOLUTION : ("<< x[0] << ","<< x[1]<<")"<<endl;
@@ -51,19 +55,19 @@ vector<double> backtrackingLineSearch::optimize(){
     }
     while (count<10){
         delta=utils::Delta(df(x));
-        while (f({x[0]+alpha*delta[0],x[1]+alpha*delta[1]})>f(x)+wolfe_para*(df(x)[0]*alpha*delta[0]+df(x)[1]*alpha*delta[1])){
-            alpha*=alpha_dec;
+        while (f({x[0]+alpha_*delta[0],x[1]+alpha_*delta[1]})>f(x)+wolfe_para*(df(x)[0]*alpha_*delta[0]+df(x)[1]*alpha_*delta[1])){
+            alpha_*=alpha_dec_;
             if(verbose!=0) cout<<"Dec Alpha to: "<<alpha<<endl;
         }
-        x[0]+=alpha*delta[0];
-        x[1]+=alpha*delta[1];
-        alpha*=alpha_inc;
+        x[0]+=alpha_*delta[0];
+        x[1]+=alpha_*delta[1];
+        alpha_*=alpha_inc_;
         if (verbose!=0){
             cout << "########### NEW SOLUTION ########### : ("<< x[0] << ","<< x[1]<<")"<<endl;
             logFile<<x[0]<<" "<<x[1]<<" "<<f(x)<<endl;
         }
         // terminaltion rule for the inner loop
-        if(sqrt(pow(alpha*delta[0],2)+pow(alpha*delta[1],2))<tol)count++;
+        if(sqrt(pow(alpha_*delta[0],2)+pow(alpha_*delta[1],2))<tol)count++;
         }
     logFile.close();
     return x;
