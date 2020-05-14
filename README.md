@@ -31,13 +31,13 @@ Currently, the library contains the following algorithms:
 
 ## Verbosity
 - I am using three level for logging. You can control that by changing the verbose parameter in the algopt.cfg to one of the following values:
-* 0 : No loging / No plotting
-* 1 : Yes loging / No plotting
-* 2 : Yes loging / Yes plotting
+    * 0 : No loging / No plotting
+    * 1 : Yes loging / No plotting
+    * 2 : Yes loging / Yes plotting
 
-- NOTE: If you want to have an interative plot, you can use the solutionPath.plt within gnuplot shell by doing the following:
-* `gnuplot`
-* `load "solutionPath.plt"`
+- **NOTE**: If you want to have an interative plot, you can use the solutionPath.plt within gnuplot shell by doing the following:
+    * `gnuplot`
+    * `load "solutionPath.plt"`
 
 ## Project Structure:
 * main.cpp 
